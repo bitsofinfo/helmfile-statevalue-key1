@@ -1,0 +1,9 @@
+releases:
+  - name: nginx-1
+    chart: stable/nginx-ingress
+    values:
+      {{ range $key := keys .Values.top.middle }}
+      - key-{{ $key }}: "exists"
+      {{ end }}
+        x: {{ .Values.top.middle | getOrNil "x" }}
+        y: {{ .Values.top.middle | getOrNil "y" }}
